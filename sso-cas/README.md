@@ -1,5 +1,7 @@
 # SSO 设计与实现
 
+## 系统部署和运行
+
 ## 功能范围
 1. 单点登录
 	1. 多个业务系统，在某个系统登录后，再访问其他系统无需再登录
@@ -34,13 +36,14 @@
 
 ## 系统实现
 
-### 开发设计
-
+### ER 图
+![[sso-cas-er.excalidraw]]
 
 ### 接口清单
 
 | 接口路径                       | 接口参数          | 接口说明                |
 | -------------------------- | ------------- | ------------------- |
+| /api/cas/register [POST]   | { name, pwd } | 注册                  |
 | /api/cas/login [POST]      | { name, pwd } | 登录                  |
 | /api/cas/getSession [POST] |               | 根据 ST 获取 SESSION_ID |
 | /api/cas/validate [POST]   |               | 校验登录态               |
@@ -54,3 +57,5 @@ app_code 默认应该是要注册后，才能对接使用 sso
 
 1. client -> sso
 	1. `${sso domain}/handle?redirect=${client url}&app_code=${current client code}`
+
+
